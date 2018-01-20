@@ -1,7 +1,5 @@
 package com.skybet.automation.framework.objects.outcomes;
 
-import java.util.List;
-
 public class Outcome {
 
 	private int outcomeId;

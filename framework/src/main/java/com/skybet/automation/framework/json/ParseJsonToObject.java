@@ -14,7 +14,6 @@ public class ParseJsonToObject {
 
 	public Events parseJsonToLiveEventsArray(JsonObject eventsObject){
 		Events events = new Events();
-//		System.out.println(eventsObject.getAsJsonArray("events").get(0));
 		events = gson.fromJson(eventsObject, Events.class);
 		return events;
 	}

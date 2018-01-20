@@ -1,7 +1,5 @@
 package com.skybet.automation.framework.objects.markets;
 
-import java.util.List;
-
 public class Market {
 
 	private int marketId;
