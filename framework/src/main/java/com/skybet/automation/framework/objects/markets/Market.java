@@ -1,25 +1,18 @@
-package com.skybet.automation.framework.objects.outcomes;
+package com.skybet.automation.framework.objects.markets;
 
 import java.util.List;
 
-public class Outcome {
+public class Market {
 
-	private int outcomeId;
 	private int marketId;
 	private int eventId;
 	private String name;
 	private int displayOrder;
-	private Result result = null;
-	private int linkedOutcomeId;
-	private Price price = null;
+	private String type;
 	private Status status = null;
+	private Liabilities liabilities = null;
+	private boolean spAvail;
 	
-	public int getOutcomeId() {
-		return outcomeId;
-	}
-	public void setOutcomeId(int outcomeId) {
-		this.outcomeId = outcomeId;
-	}
 	public int getMarketId() {
 		return marketId;
 	}
@@ -44,29 +37,29 @@ public class Outcome {
 	public void setDisplayOrder(int displayOrder) {
 		this.displayOrder = displayOrder;
 	}
-	public Result getResult() {
-		return result;
+	public String getType() {
+		return type;
 	}
-	public void setResult(Result result) {
-		this.result = result;
-	}
-	public int getLinkedOutcomeId() {
-		return linkedOutcomeId;
-	}
-	public void setLinkedOutcomeId(int linkedOutcomeId) {
-		this.linkedOutcomeId = linkedOutcomeId;
-	}
-	public Price getPrice() {
-		return price;
-	}
-	public void setPrice(Price price) {
-		this.price = price;
+	public void setType(String type) {
+		this.type = type;
 	}
 	public Status getStatus() {
 		return status;
 	}
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+	public Liabilities getLiabilities() {
+		return liabilities;
+	}
+	public void setLiabilities(Liabilities liabilities) {
+		this.liabilities = liabilities;
+	}
+	public boolean isSpAvail() {
+		return spAvail;
+	}
+	public void setSpAvail(boolean spAvail) {
+		this.spAvail = spAvail;
 	}
 	
 }

@@ -15,9 +15,6 @@ public class Event {
 	private String typeName;
 	private int LinkedEventTypeId;
 	private String startTime;
-//	private Map<String, Integer> scores = new HashMap<String, Integer>();
-//	private Map<String, Map<String, String>> competitors = new HashMap<String, Map<String, String>>();
-//	private Map< String, Boolean> status = new HashMap<String, Boolean>();
 	private Scores scores = null;
 	private List<Competitor> competitors = null;
 	private Status status = null;
