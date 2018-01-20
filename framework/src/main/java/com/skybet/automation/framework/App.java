@@ -1,38 +1,16 @@
 package com.skybet.automation.framework;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
-
-import javax.websocket.*;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.ContentType;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.skybet.automation.framework.api.ApiConnection;
 import com.skybet.automation.framework.api.HttpClientFactory;
-import com.skybet.automation.framework.api.WebSocketConnection;
 import com.skybet.automation.framework.json.ParseJsonToObject;
 import com.skybet.automation.framework.objects.events.Event;
 import com.skybet.automation.framework.objects.events.Events;
+import com.skybet.automation.framework.objects.markets.Markets;
+import com.skybet.automation.framework.objects.outcomes.Outcomes;
 /**
  * Hello world!
  *
@@ -60,7 +38,16 @@ public class App
     	
     	jsonObject = apiConnection.getJsonResponseFromAPI(httpClient, "http://localhost:8888/sportsbook/event/"+event.getEventId());
     	
+    	Markets markets = parseJsonToObject.parseJsonToMarketsArray(jsonObject, event.getEventId());
+    	for (int i = 0; i < markets.getMarkets().size(); i++) {
+    		System.out.println(markets.getMarkets().get(i).getMarketId());
+		}
+    	jsonObject = apiConnection.getJsonResponseFromAPI(httpClient, "http://localhost:8888/sportsbook/market/"+markets.getMarkets().get(0).getMarketId());
     	
+    	Outcomes outcomes = parseJsonToObject.parseJsonToOutcomesArray(jsonObject, markets.getMarkets().get(0).getMarketId());
+    	for (int i = 0; i < outcomes.getOutcomes().size(); i++) {
+    		System.out.println(outcomes.getOutcomes().get(i).getName());
+		}
     	
 //    	WebSocketConnection webSocketConnection = new WebSocketConnection();
 //    	webSocketConnection.connectToWebSocket();
