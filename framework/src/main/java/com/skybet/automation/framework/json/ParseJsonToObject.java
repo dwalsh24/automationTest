@@ -75,6 +75,11 @@ public class ParseJsonToObject {
 		return outcomes;
 	}
 	
+	/**
+	 * Returns an array of all Outcome updates retrieved over the duration of the websocket subscription
+	 * @param jsonObjects - ArrayList of Json Objects obtained from websocket outcome subscription
+	 * @return
+	 */
 	public ArrayList<OutcomeUpdate> parseJsonArrayToOutcomeUpdateArray(ArrayList<JsonObject> jsonObjects){
 		ArrayList<OutcomeUpdate> outcomeUpdates = new ArrayList<OutcomeUpdate>();
 		for (int i = 0; i < jsonObjects.size(); i++) {
@@ -83,6 +88,11 @@ public class ParseJsonToObject {
 		return outcomeUpdates;
 	}
 	
+	/**
+	 * Returns an array of all Market updates retrieved over the duration of the websocket subscription
+	 * @param jsonObjects - ArrayList of Json Objects obtained from websocket outcome subscription
+	 * @return
+	 */
 	public ArrayList<MarketUpdate> parseJsonArrayToMarketUpdateArray(ArrayList<JsonObject> jsonObjects){
 		ArrayList<MarketUpdate> marketUpdates = new ArrayList<MarketUpdate>();
 		for (int i = 0; i < jsonObjects.size(); i++) {

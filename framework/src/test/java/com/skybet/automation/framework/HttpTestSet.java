@@ -22,7 +22,7 @@ public class HttpTestSet {
 	static CloseableHttpClient httpClient;
 	static ApiConnection apiConnection;
 	static ParseJsonToObject parseJsonToObject;
-	static String apiUri = "http://localhost:8888/";
+	static String apiUri = "http://192.168.99.100:8888";
 	
 	JsonObject liveFootballJson;
 	Events liveFootballEvents;
