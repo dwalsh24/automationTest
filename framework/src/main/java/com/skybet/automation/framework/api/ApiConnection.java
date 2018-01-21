@@ -22,7 +22,7 @@ public class ApiConnection {
 			HttpEntity httpEntity = response.getEntity();
 
 			apiOutput = EntityUtils.toString(httpEntity);
-			System.out.println("Response from API: " + apiOutput);
+			System.out.println("Response from API at "+ uri + " : " + apiOutput);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

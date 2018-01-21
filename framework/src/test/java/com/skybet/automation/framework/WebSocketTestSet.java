@@ -28,7 +28,7 @@ public class WebSocketTestSet {
 	static WebSocketConnection webSocketConnection;
 	static ParseJsonToObject parseJsonToObject;
 	static Serialiser serialiser = new Serialiser();
-	String uri = "ws://localhost:8889";
+	String uri = "ws://192.168.99.100:8889";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

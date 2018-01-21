@@ -13,6 +13,7 @@ import com.skybet.automation.framework.json.ParseJsonToObject;
 import com.skybet.automation.framework.objects.events.*;
 import com.skybet.automation.framework.objects.markets.Market;
 import com.skybet.automation.framework.objects.markets.Markets;
+import com.skybet.automation.framework.objects.outcomes.Outcomes;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HttpTestSet {
@@ -22,7 +23,7 @@ public class HttpTestSet {
 	static CloseableHttpClient httpClient;
 	static ApiConnection apiConnection;
 	static ParseJsonToObject parseJsonToObject;
-	static String apiUri = "http://localhost:8888";
+	static String apiUri = "http://192.168.99.100:8888";
 	
 	JsonObject liveFootballJson;
 	Events liveFootballEvents;
@@ -80,6 +81,15 @@ public class HttpTestSet {
 			}
 		}
 		assertNotNull(market);
+	}
+	
+	@Test
+	public void tc_05_AssertMarketHasLinkedOutcomes() {
+		JsonObject eventJson = apiConnection.getJsonResponseFromAPI(httpClient, apiUri + "/sportsbook/event/" + liveFootballEvents.getEvents().get(0).getEventId());
+		Markets markets = parseJsonToObject.parseJsonToMarketsArray(eventJson, liveFootballEvents.getEvents().get(0).getEventId());
+		JsonObject outcomesJson = apiConnection.getJsonResponseFromAPI(httpClient, apiUri+ "/sportsbook/market/" + markets.getMarkets().get(0).getMarketId());
+		Outcomes outcomes = parseJsonToObject.parseJsonToOutcomesArray(outcomesJson, markets.getMarkets().get(0).getMarketId());
+		assertNotNull(outcomes);
 	}
 
 }
