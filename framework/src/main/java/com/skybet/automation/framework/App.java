@@ -3,6 +3,8 @@ package com.skybet.automation.framework;
 import java.io.IOException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.skybet.automation.framework.api.ApiConnection;
 import com.skybet.automation.framework.api.HttpClientFactory;
@@ -20,17 +22,18 @@ public class App
     public static void main( String[] args ) throws ClientProtocolException, IOException
     {
     	HttpClientFactory httpClientFactory = new HttpClientFactory();
-    	HttpClient httpClient = httpClientFactory.httpClientFactory();
+    	HttpClient httpClient = httpClientFactory.createHttpClient();
     	ApiConnection apiConnection = new ApiConnection();
+    	Gson gson = new Gson();
     	JsonObject jsonObject = apiConnection.getJsonResponseFromAPI(httpClient, "http://localhost:8888/football/live");
     	
 //    	System.out.println(jsonObject);
-    	ParseJsonToObject parseJsonToObject = new ParseJsonToObject();
+    	ParseJsonToObject parseJsonToObject = new ParseJsonToObject(gson);
     	Events events = parseJsonToObject.parseJsonToLiveEventsArray(jsonObject);
     	
-    	System.out.println(events.getEvents().length);
-    	System.out.println(events.getEvents()[0].getName());
-    	System.out.println(events.getEvents()[1].getName());
+    	System.out.println(events.getEvents().size());
+    	System.out.println(events.getEvents().get(0).getName());
+    	System.out.println(events.getEvents().get(1).getName());
     	System.out.println("!---------------");
     	
     	Event event = parseJsonToObject.parseJsonToFirstLiveEvent(jsonObject);

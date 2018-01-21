@@ -1,15 +1,16 @@
 package com.skybet.automation.framework.objects.events;
 
-public class Events {
-	private Event[] events;
+import java.util.ArrayList;
 
-	public Event[] getEvents() {
+public class Events {
+	private ArrayList<Event> events;
+
+	public ArrayList<Event> getEvents() {
 		return events;
 	}
 
-	public void setEvents(Event[] events) {
+	public void setEvents(ArrayList<Event> events) {
 		this.events = events;
 	}
-	
-	
+
 }

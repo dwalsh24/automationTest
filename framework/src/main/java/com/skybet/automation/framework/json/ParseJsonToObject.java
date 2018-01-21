@@ -13,8 +13,8 @@ import com.skybet.automation.framework.objects.outcomes.Outcomes;
 public class ParseJsonToObject {
 	
 	Gson gson;
-	public ParseJsonToObject(){
-		gson = new Gson();
+	public ParseJsonToObject(Gson gson){
+		this.gson = gson;
 	}
 
 	/**
