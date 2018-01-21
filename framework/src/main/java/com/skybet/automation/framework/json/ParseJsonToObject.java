@@ -17,23 +17,38 @@ public class ParseJsonToObject {
 		gson = new Gson();
 	}
 
+	/**
+	 * Returns the events listed in /football/live as an Event array
+	 * @param eventsObject - JSON obtained from /football/live
+	 * @return
+	 */
 	public Events parseJsonToLiveEventsArray(JsonObject eventsObject){
 		Events events = new Events();
 		events = gson.fromJson(eventsObject, Events.class);
 		return events;
 	}
 	
+	/**
+	 * Returns the first event listed in /football/live as an Event object
+	 * @param eventObject - JSON obtained from /football/live
+	 * @return
+	 */
 	public Event parseJsonToFirstLiveEvent(JsonObject eventObject){
 		Event event = new Event();
 		event = gson.fromJson(eventObject.getAsJsonArray("events").get(0), Event.class);
 		return event;
 	}
 	
+	/**
+	 * Returns the Markets in an array for a given Event object
+	 * @param eventObject - JSON obtained from /sportsbook/event/(eventId)
+	 * @param eventId - eventId of the event object to find markets for
+	 * @return
+	 */
 	public Markets parseJsonToMarketsArray(JsonObject eventObject, int eventId){
 		Markets markets = new Markets();
 		ArrayList<Market> marketList = new ArrayList<Market>();
 		JsonArray jsonArray = eventObject.get("markets").getAsJsonObject().get(eventId+"").getAsJsonArray();
-		System.out.println(jsonArray);
 		for (int i = 0; i < jsonArray.size(); i++) {
 			marketList.add(gson.fromJson(jsonArray.get(i), Market.class));
 		}
@@ -41,11 +56,16 @@ public class ParseJsonToObject {
 		return markets;
 	}
 	
+	/**
+	 * Returns the Outcomes of a given Market object
+	 * @param marketObject - JSON obtained from /sportsbook/market/(marketId)
+	 * @param marketId - marketId of the market object to find outcomes for
+	 * @return
+	 */
 	public Outcomes parseJsonToOutcomesArray(JsonObject marketObject, int marketId){
 		Outcomes outcomes = new Outcomes();
 		ArrayList<Outcome> outcomeList = new ArrayList<Outcome>();
 		JsonArray jsonArray = marketObject.get("outcomes").getAsJsonObject().get(marketId+"").getAsJsonArray();
-		System.out.println(jsonArray);
 		for (int i = 0; i < jsonArray.size(); i++) {
 			outcomeList.add(gson.fromJson(jsonArray.get(i), Outcome.class));
 		}
