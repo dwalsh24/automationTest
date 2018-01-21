@@ -7,8 +7,10 @@ import com.google.gson.JsonObject;
 import com.skybet.automation.framework.objects.events.Event;
 import com.skybet.automation.framework.objects.events.Events;
 import com.skybet.automation.framework.objects.markets.*;
+import com.skybet.automation.framework.objects.markets.updates.MarketUpdate;
 import com.skybet.automation.framework.objects.outcomes.Outcome;
 import com.skybet.automation.framework.objects.outcomes.Outcomes;
+import com.skybet.automation.framework.objects.outcomes.updates.OutcomeUpdate;
 
 public class ParseJsonToObject {
 	
@@ -71,5 +73,21 @@ public class ParseJsonToObject {
 		}
 		outcomes.setOutcomes(outcomeList);
 		return outcomes;
+	}
+	
+	public ArrayList<OutcomeUpdate> parseJsonArrayToOutcomeUpdateArray(ArrayList<JsonObject> jsonObjects){
+		ArrayList<OutcomeUpdate> outcomeUpdates = new ArrayList<OutcomeUpdate>();
+		for (int i = 0; i < jsonObjects.size(); i++) {
+			outcomeUpdates.add(gson.fromJson(jsonObjects.get(i), OutcomeUpdate.class));
+		}
+		return outcomeUpdates;
+	}
+	
+	public ArrayList<MarketUpdate> parseJsonArrayToMarketUpdateArray(ArrayList<JsonObject> jsonObjects){
+		ArrayList<MarketUpdate> marketUpdates = new ArrayList<MarketUpdate>();
+		for (int i = 0; i < jsonObjects.size(); i++) {
+			marketUpdates.add(gson.fromJson(jsonObjects.get(i), MarketUpdate.class));
+		}
+		return marketUpdates;
 	}
 }

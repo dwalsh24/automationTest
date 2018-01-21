@@ -2,7 +2,6 @@ package com.skybet.automation.framework;
 
 import static org.junit.Assert.*;
 
-import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.*;
 import org.junit.runners.MethodSorters;

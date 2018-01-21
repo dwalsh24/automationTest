@@ -10,11 +10,6 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 
-/**
- * ChatServer Client
- *
- * @author Jiji_Sasidharan
- */
 @ClientEndpoint
 public class WebsocketClientEndpoint {
 
@@ -86,7 +81,6 @@ public class WebsocketClientEndpoint {
     /**
      * Message handler.
      *
-     * @author Jiji_Sasidharan
      */
     public static interface MessageHandler {
 

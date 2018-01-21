@@ -7,8 +7,9 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest extends TestCase
+public class WebSocketTestSet extends TestCase
 {
 
+	
 
 }
