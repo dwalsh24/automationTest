@@ -58,4 +58,11 @@ public class WebSocketTestSet {
 		assertTrue(jsonObjects.get(0) != null);
 	}
 
+	@Test
+	public void tc_02_AssertUserCanReceiveOutcomeSubscriptionFromWebSocketServer() {
+		ArrayList<String> jsonResponses = webSocketConnection.getUpdatesFromWebSocket(uri, "{\"type\": \"subscribe\", \"keys\": [\"o.*\"]}", 10000);
+		ArrayList<JsonObject> jsonObjects = serialiser.serializeStringArrayListToJsonObjectArrayList(jsonResponses);
+		
+		assertTrue(jsonObjects.get(0) != null);
+	}
 }
