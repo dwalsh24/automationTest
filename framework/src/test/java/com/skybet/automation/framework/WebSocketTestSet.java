@@ -22,9 +22,6 @@ public class WebSocketTestSet {
 	 * Basic message templates:
 	 * subscribe to all market activity - {\"type\": \"subscribe\", \"keys\": [\"m.*\"]}
 	 * subscribe to all outcome activity - {\"type\": \"subscribe\", \"keys\": [\"o.*\"]}
-	 * 
-	 * uri on desktop: ws://localhost:8889
-	 * uri on macbook: http://192.168.99.100:8889
 	 */
 	
 	static Gson gson;
