@@ -16,7 +16,12 @@ import com.skybet.automation.framework.objects.markets.Markets;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HttpTestSet {
-
+	
+	/*
+	 * uri on desktop: http://localhost:8888
+	 * uri on macbook: http://192.168.99.100:8888
+	 */
+	
 	static Gson gson;
 	static HttpClientFactory httpClientFactory;
 	static CloseableHttpClient httpClient;
