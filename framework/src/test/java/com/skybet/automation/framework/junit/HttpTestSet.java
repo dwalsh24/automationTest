@@ -1,4 +1,4 @@
-package com.skybet.automation.framework;
+package com.skybet.automation.framework.junit;
 
 import static org.junit.Assert.*;
 
