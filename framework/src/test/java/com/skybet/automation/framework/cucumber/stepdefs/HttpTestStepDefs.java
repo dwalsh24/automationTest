@@ -64,6 +64,15 @@ public class HttpTestStepDefs {
 		System.out.println("Retrieved event with id: " + event.getEventId());
 	}
 	
+	@When("user gets football event with eventId \"(.*)\" from live events")
+	public void getSingleEventByEventIdFromLiveFootballEvents(String eventId) {
+		if(eventId.startsWith("#")) {
+			eventId = dataReader.findDataForTestCase(eventId);
+		}
+		event = liveFootballEvents.getEventByEventId(Integer.parseInt(eventId));
+		System.out.println("Retrieved event with id: " + event.getEventId());
+	}
+	
 	@Then("user verifies event (eventId|name) = \"(.*)\"")
 	public void verifyEventParameterEqualsX(String parameter, String comparison) {
 		if(comparison.startsWith("#")) {
